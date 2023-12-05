@@ -1,6 +1,8 @@
-# knowledge_test
+# KnowledgeTest
 
-A new Flutter project.
+App que utiliza do recurso do OpenChat para criar um jogo de perguntas e respostas com o tema desejado!
+
+[OpenChat](https://openchat.team/)
 
 ## Getting Started
 
