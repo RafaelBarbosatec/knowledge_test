@@ -71,7 +71,7 @@ class _HomePageState extends State<HomePage> {
                     SizedBox(
                       width: double.maxFinite,
                       child: ElevatedButton(
-                        onPressed: homeController.loading ? null : _subimit,
+                        onPressed: homeController.loading ? null : _submit,
                         style: const ButtonStyle(
                           shape: MaterialStatePropertyAll(StadiumBorder()),
                         ),
@@ -95,7 +95,7 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  void _subimit() {
+  void _submit() {
     if (_form.currentState?.validate() == true) {
       homeController.loadQuestions(
         _controller.text,

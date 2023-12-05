@@ -14,7 +14,7 @@ class QuestionsPage extends StatefulWidget {
 
 class _QuestionsPageState extends State<QuestionsPage> {
   final Map<int, int?> _answers = {};
-  bool showCorrect = false;
+  bool showCorrectAnswers = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,7 +31,7 @@ class _QuestionsPageState extends State<QuestionsPage> {
                 return QuestionWidget(
                   item: widget.questions[index],
                   selectedIndex: _answers[index],
-                  showCorrect: showCorrect,
+                  showCorrect: showCorrectAnswers,
                   onTapAnswer: (res) {
                     setState(() {
                       _answers[index] = res;
@@ -41,21 +41,22 @@ class _QuestionsPageState extends State<QuestionsPage> {
               },
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: SizedBox(
-              width: double.maxFinite,
-              child: ElevatedButton(
-                onPressed: _answers.length >= widget.questions.length
-                    ? _subimit
-                    : null,
-                style: const ButtonStyle(
-                  shape: MaterialStatePropertyAll(StadiumBorder()),
+          if (!showCorrectAnswers)
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: SizedBox(
+                width: double.maxFinite,
+                child: ElevatedButton(
+                  onPressed: _answers.length >= widget.questions.length
+                      ? _subimit
+                      : null,
+                  style: const ButtonStyle(
+                    shape: MaterialStatePropertyAll(StadiumBorder()),
+                  ),
+                  child: const Text('Validar'),
                 ),
-                child: const Text('Validar'),
               ),
-            ),
-          )
+            )
         ],
       ),
     );
@@ -63,7 +64,7 @@ class _QuestionsPageState extends State<QuestionsPage> {
 
   void _subimit() {
     setState(() {
-      showCorrect = true;
+      showCorrectAnswers = true;
     });
   }
 }

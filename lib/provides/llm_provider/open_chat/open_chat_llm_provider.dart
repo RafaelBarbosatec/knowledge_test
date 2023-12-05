@@ -11,11 +11,9 @@ class OpenChatLLMProvider implements LLMProvider {
   Future<String> prompt(String prompt) {
     return http
         .post(
-      Uri.parse(url),
-      body: OpenChatRequest.fromPrompt(prompt).toJson(),
-    )
-        .then((value) {
-      return utf8.decode(value.bodyBytes);
-    });
+          Uri.parse(url),
+          body: OpenChatRequest.fromPrompt(prompt).toJson(),
+        )
+        .then((value) => utf8.decode(value.bodyBytes));
   }
 }

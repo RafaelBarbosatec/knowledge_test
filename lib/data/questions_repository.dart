@@ -17,11 +17,14 @@ O tema das perguntas deve ser {tema}""";
   QuestionRepository({required this.llm});
 
   Future<List<Question>> getQuestions(String theme) {
-    return llm.prompt(PROMPT_BASE.replaceAll('{tema}', theme)).then((value) {
-      return (jsonDecode(value.replaceAll('\n', ''))['perguntas'] as List)
-          .map((e) {
-        return Question.fromMap((e as Map).cast());
-      }).toList();
-    });
+    final prompt = PROMPT_BASE.replaceAll('{tema}', theme);
+    return llm.prompt(prompt).then(_mapQuestionList);
+  }
+
+  List<Question> _mapQuestionList(String value) {
+    final map = jsonDecode(value.replaceAll('\n', ''));
+    return (map['perguntas'] as List).map((e) {
+      return Question.fromMap((e as Map).cast());
+    }).toList();
   }
 }
