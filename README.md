@@ -1,5 +1,10 @@
 # KnowledgeTest
 
+| 1 | 2   | 
+| :---:   | :---: | 
+| ![](https://raw.githubusercontent.com/RafaelBarbosatec/knowledge_test/main/imgs/print1.png) | ![](https://raw.githubusercontent.com/RafaelBarbosatec/knowledge_test/main/imgs/print2.png)   | 
+
+
 App que utiliza do recurso do OpenChat para criar um jogo de perguntas e respostas com o tema desejado!
 
 [OpenChat](https://openchat.team/)
