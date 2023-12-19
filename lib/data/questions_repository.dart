@@ -12,7 +12,7 @@ Campo da resposta deve se chamar texto.
 Campo que diz se é a correta deve se chamar correto
 O tema das perguntas deve ser {tema}""";
 
-  final LLMProvider llm;
+  final MyLLMProvider llm;
 
   QuestionRepository({required this.llm});
 

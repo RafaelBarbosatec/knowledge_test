@@ -1,19 +1,13 @@
-import 'dart:convert';
-
-import 'package:http/http.dart' as http;
+import 'package:flutter_openchat/flutter_openchat.dart';
 import 'package:knowledge_test/provides/llm_provider/llm_provider.dart';
-import 'package:knowledge_test/provides/llm_provider/open_chat/model/open_chat_request.dart';
 
-class OpenChatLLMProvider implements LLMProvider {
-  static const url = 'https://openchat.team/api/chat';
+class OpenChatLLMProvider implements MyLLMProvider {
+  final OpenChatTeamLLM llm;
+
+  OpenChatLLMProvider({required this.llm});
 
   @override
-  Future<String> prompt(String prompt) {
-    return http
-        .post(
-          Uri.parse(url),
-          body: OpenChatRequest.fromPrompt(prompt).toJson(),
-        )
-        .then((value) => utf8.decode(value.bodyBytes));
+  Future<String> prompt(String prompt) async {
+    return llm.prompt(prompt);
   }
 }

@@ -1,3 +1,3 @@
-abstract class LLMProvider {
+abstract class MyLLMProvider {
   Future<String> prompt(String prompt);
 }

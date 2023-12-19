@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_openchat/flutter_openchat.dart';
 import 'package:knowledge_test/data/questions_repository.dart';
 import 'package:knowledge_test/pages/home/home_controller.dart';
 import 'package:knowledge_test/pages/home/home_page.dart';
@@ -19,8 +20,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        Provider<LLMProvider>(
-          create: (context) => OpenChatLLMProvider(),
+        Provider<MyLLMProvider>(
+          create: (context) => OpenChatLLMProvider(llm: OpenChatTeamLLM()),
         ),
         Provider(
           create: (context) => QuestionRepository(llm: context.read()),
